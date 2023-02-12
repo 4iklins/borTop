@@ -17,10 +17,10 @@ a {
 
 :root {
 	--black: #3B434E;
-	--gray: #EBEBEB;
+	--light-gray: #EBEBEB;
 	--white: white;
-	--primary: #7653FC;
-	--primary-hover: #6C47FF;
+	--primary: #FC007E;
+	--primary-hover: #AF0058;
 	--red: #FC836D;
 	--green: #1DC37E;
 	--light-green: #C8F8E4;
