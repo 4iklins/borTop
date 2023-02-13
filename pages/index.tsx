@@ -1,4 +1,4 @@
-import { Button, Htag, Ptag, Tag } from "./components";
+import { Button, Htag, Ptag, Tag, Rating } from "./components";
 
 
 export default function Home() {
@@ -20,6 +20,7 @@ export default function Home() {
       <Tag size='small' color='ghost'>ghost</Tag>
       <Tag size='small' color='green'>green</Tag>
       <Tag>empty</Tag>
+      <Rating rating={3} />
     </>
   );
 }

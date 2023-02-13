@@ -15,32 +15,32 @@
 }
 
 .primary {
+	font-weight: 500;
 	color: var(--primary);
 	border: 1px solid var(--primary);
-	font-weight: 500;
 }
 
 .ghost {
-	border: 1px solid var(--light-gray);
 	font-weight: 500;
+	border: 1px solid var(--light-gray);
 }
 
 .grey {
+	font-weight: 600;
 	color: var(--white);
 	background-color: #B3C0D9;
-	font-weight: 600;
 }
 
 .red {
+	font-weight: 600;
 	color: var(--white);
 	background-color: #DE0000;
-	font-weight: 600;
 }
 
 .green {
+	font-weight: 700;
 	color: var(--green);
 	background-color: var(--light-green);
-	font-weight: 700;
 }
 
 .href {

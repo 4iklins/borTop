@@ -1,0 +1,10 @@
+.star {
+	box-sizing: border-box;
+	display: inline-block;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.filled {
+	fill: var(--primary);
+}
