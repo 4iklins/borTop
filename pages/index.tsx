@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Button, Htag, Ptag, Tag, Rating } from "./components";
+import withLayout from "./HOC/withLayout";
 
 
-export default function Home() {
+const Home = () => {
+  const [rating,setRating] = useState<number>(3);
   return (
     <>
       <Htag tag='h1'>Test</Htag>
@@ -20,7 +23,9 @@ export default function Home() {
       <Tag size='small' color='ghost'>ghost</Tag>
       <Tag size='small' color='green'>green</Tag>
       <Tag>empty</Tag>
-      <Rating rating={3} />
+      <Rating rating={rating} isEditable={true} setRating={setRating}/>
     </>
   );
-}
+};
+
+export default withLayout(Home);
