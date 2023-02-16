@@ -1,10 +1,19 @@
-.star {
-	box-sizing: border-box;
-	display: inline-block;
+.star svg {
 	margin-left: 5px;
+}
+
+.filled svg {
+	fill: var(--primary);
+}
+
+.isEditable {
 	cursor: pointer;
 }
 
-.filled {
-	fill: var(--primary);
+.star svg:focus {
+	outline: none;
+}
+
+.star svg:focus-visible {
+	transform: scale(1.2);
 }
