@@ -1,4 +1,4 @@
-export enum LevelCategory {
+export enum menuCategory {
 	Courses,
 	Services,
 	Books,
@@ -58,7 +58,7 @@ export interface PageModel {
 	tagsTitle: string;
 	metaTitle: string;
 	metaDescription: string;
-	firstCategory: LevelCategory;
+	firstCategory: menuCategory;
 	advantages: Advantage[];
 	createdAt: Date;
 	updatedAt: Date;
