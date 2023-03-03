@@ -2,21 +2,12 @@ import styles from "./Menu.module.css";
 import cn from "classnames";
 import { useContext } from 'react';
 import { AppContext } from '@/context/app.context';
-import { FirstLevelMenu, PageItem } from '@/interfaces/menu.interface';
-import { menuCategory } from "@/interfaces/page.interface";
-import CoursesIcon from './icons/courses.svg';
-import ServicesIcon from './icons/services.svg';
-import BooksIcon from './icons/books.svg';
-import ProductsIcon from './icons/products.svg';
+import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { firstLevelMenu } from '@/helpers/helper';
 
-const firstLevelMenu:FirstLevelMenu[] = [
-  {route:'/courses', name:'Курсы', icon:<CoursesIcon/>, id:menuCategory.Courses},
-  {route:'/services', name:'Сервисы', icon:<ServicesIcon/>, id:menuCategory.Services},
-  {route:'/books', name:'Книги', icon:<BooksIcon/>, id:menuCategory.Books},
-  {route:'/products', name:'Продукты', icon:<ProductsIcon/>, id:menuCategory.Products},
-];
+
 
 export const Menu = (): JSX.Element => {
   const { menu, firstCategory, setMenu } = useContext(AppContext);
@@ -38,7 +29,7 @@ export const Menu = (): JSX.Element => {
         {firstLevelMenu.map(menuItem => {
           return (
             <div className={styles.firstLevelMenuItem} key={menuItem.route}>
-              <Link href={`${menuItem.route}`}>
+              <Link href={`/${menuItem.route}`}>
                 <div className={cn(styles.firstLevelMenuHead, {[styles.firstLevelMenuHeadActive]:menuItem.id == firstCategory})}>
                   {menuItem.icon}
                   <span>{menuItem.name}</span>
@@ -52,7 +43,7 @@ export const Menu = (): JSX.Element => {
     );
   };
 
-  const buildSecondLevelMenu = (FirsLevelMenuItem:FirstLevelMenu) => {
+  const buildSecondLevelMenu = (FirsLevelMenuItem:FirstLevelMenuItem) => {
     return(
       <ul className={styles.secondLevelMenu}>
         {menu.map((menuItem) => {
@@ -72,15 +63,15 @@ export const Menu = (): JSX.Element => {
     );
   };
 
-  const buildThirdLevelMenu = (FirsLevelMenuItem:FirstLevelMenu,pages:PageItem[]) => {
+  const buildThirdLevelMenu = (FirsLevelMenuItem:FirstLevelMenuItem,pages:PageItem[]) => {
     return(
         <ul>
           {pages.map(page => (
             <li className={cn(styles.thirdLevelMenuItem,{
-              [styles.thirdLevelMenuItemActive]:`${FirsLevelMenuItem.route}/${page.alias}` == router.asPath
+              [styles.thirdLevelMenuItemActive]:`/${FirsLevelMenuItem.route}/${page.alias}` == router.asPath
             })} 
               key={page.alias}>
-              <Link href={`${FirsLevelMenuItem.route}/${page.alias}`}>
+              <Link href={`/${FirsLevelMenuItem.route}/${page.alias}`}>
                 {page.category}
               </Link>
             </li>
