@@ -11,7 +11,7 @@ export const Tag = ({ color = 'ghost', children, size = 'small', href, className
         [styles.primary]: color == 'primary',
         [styles.ghost]: color == 'ghost',
         [styles.red]: color == 'red',
-        [styles.grey]: color == 'grey',
+        [styles.gray]: color == 'gray',
         [styles.green]: color == 'green',
       })}
       {...props}

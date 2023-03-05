@@ -4,11 +4,12 @@ import cn from "classnames";
 import { Menu } from '../Menu/Menu';
 import Logo from '../logo.svg';
 
-export const Sidebar = ({ ...props }: SidebarProps): JSX.Element => {
+export const Sidebar = ({ className }: SidebarProps): JSX.Element => {
   return (
-  
-    <div {...props}>
-      <Logo/>
+
+    <div className={cn(styles.wrapper, className)}>
+      <Logo />
+      <div>Поиск</div>
       <Menu />
     </div>
   );
