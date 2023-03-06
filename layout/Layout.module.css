@@ -30,10 +30,11 @@
 @media (max-width: 765px) {
 	.wrapper {
 		grid-template-areas:
-			"header"
-			"body"
-			"footer";
-		grid-template-columns: minmax(320px, 1fr);
+			"header header header"
+			". body ."
+			"footer footer footer";
+		grid-template-columns: 10px minmax(300px, 1fr) 10px;
+		gap: 0;
 	}
 
 	.header {
