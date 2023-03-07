@@ -1,8 +1,6 @@
 import { HhDtatProps } from "./HhData.props";
 import styles from "./HhData.module.css";
-import { Htag } from '../Htag/Htag';
-import { Tag } from '../Tag/Tag';
-import { Card } from '../Card/Card';
+import { Htag, Tag, Card } from '@/components';
 import Star from './star.svg';
 import { priceRu } from "@/helpers/helper";
 

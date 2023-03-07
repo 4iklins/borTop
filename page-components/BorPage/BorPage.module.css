@@ -1,4 +1,7 @@
 .wrapper {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 30px;
 	margin-top: 40px;
 }
 
@@ -8,4 +11,12 @@
 	gap: 20px;
 	align-items: center;
 	justify-items: left;
+}
+
+.skillsHead {
+	margin-bottom: 20px;
+}
+
+.skillsTag {
+	margin-right: 10px;
 }

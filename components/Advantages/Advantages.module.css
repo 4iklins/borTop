@@ -1,0 +1,26 @@
+.advantagesList {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+	margin-top: 25px;
+}
+
+.advantagesItem {
+	display: grid;
+	grid-template-columns: 50px 1fr;
+	gap: 20px 40px;
+	align-items: center;
+}
+
+.advantagesTitle {
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 27px;
+}
+
+.advantagesDescription {
+	grid-column: 1 / -1;
+	padding-left: 65px;
+	margin-left: 25px;
+	border-left: 1px solid#D2D2D2;
+}
