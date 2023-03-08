@@ -7,4 +7,5 @@ export { Tag } from './Tag/Tag';
 export { Rating } from './Rating/Rating';
 export { HhData } from './HhData/HhData';
 export { Card } from './Card/Card';
-export { Advantages } from './Advantages/Advantages'; 
+export { Advantages } from './Advantages/Advantages';
+export { Sort } from './Sort/Sort';
