@@ -5,6 +5,7 @@ import { menuCategory } from "@/interfaces/page.interface";
 import { SortEnum } from '@/components/Sort/Sort.props';
 import { useReducer } from 'react';
 import { sortReducer } from '../sort.reducer';
+import HTMLReactParser from "html-react-parser";
 
 export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps): JSX.Element => {
 
@@ -20,13 +21,17 @@ export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps
         {sortedProducts && <Tag color='gray' size='large'>{sortedProducts.length}</Tag>}
         <Sort sort={sort} setSort={setSort} />
       </div>
-      <div>
-        {sortedProducts && sortedProducts.map(p => <li key={p._id}>{p.title}</li>)}
-      </div>
+      <ul>
+        {products && products.map(p => <li key={p._id}>{p.title}</li>)}
+      </ul>
       {firstCategory == menuCategory.Courses && page && page.hh && <HhData title={page.category} {...page.hh} />}
-      {page.advantages && page.advantages.length != 0 && <Advantages advantages={page.advantages} />}
-      {page.seoText &&
-        <Ptag size="large">{page.seoText}</Ptag>
+      {page.advantages && page.advantages.length != 0 && 
+        <Advantages advantages={page.advantages}/>
+      }
+      {page.seoText &&  
+        <div className={styles.seoText}>
+          {HTMLReactParser(`<div>${page.seoText}</div>`)}
+        </div>
       }
       <div className={styles.skills}>
         <Htag className={styles.skillsHead} tag='h3'>Получаемые навыки</Htag>

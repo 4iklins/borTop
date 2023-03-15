@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Htag, Ptag, Tag, Rating } from "../components";
+import { Button, Htag, Ptag, Tag, Rating, Input, Textarea } from "../components";
 import withLayout from "../HOC/withLayout";
 import axios from 'axios';
 import { MenuItem } from "../interfaces/menu.interface";
@@ -16,16 +16,18 @@ const Home = ({ menu }: HomeProps) => {
       <Button color='ghost'>Test</Button>
       <Button color='primary' arrow="down">Test</Button>
       <Button color='ghost' arrow="right">Test</Button>
-      <Ptag size='small'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor non iusto odit illo vero magni dolores quidem laudantium totam? Voluptates, nemo nam voluptate numquam magnam dolorum accusantium assumenda debitis sint!</Ptag>
-      <Ptag size='medium'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor non iusto odit illo vero magni dolores quidem laudantium totam? Voluptates, nemo nam voluptate numquam magnam dolorum accusantium assumenda debitis sint!</Ptag>
-      <Ptag size='large'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor non iusto odit illo vero magni dolores quidem laudantium totam? Voluptates, nemo nam voluptate numquam magnam dolorum accusantium assumenda debitis sint!</Ptag>
-      <Tag size='large' color='grey'>gray</Tag>
+      <Ptag size='small'>Lorem ipsum dolor sit amet consectetur</Ptag>
+      <Ptag size='medium'>Lorem ipsum dolor sit amet consectetur</Ptag>
+      <Ptag size='large'>Lorem ipsum dolor sit amet consectetur</Ptag>
+      <Tag size='large' color='gray'>gray</Tag>
       <Tag size='large' color='red'>red</Tag>
       <Tag size='small' color='primary' href='https/'>primary</Tag>
       <Tag size='small' color='ghost'>ghost</Tag>
       <Tag size='small' color='green'>green</Tag>
       <Tag>empty</Tag>
       <Rating rating={rating} isEditable={true} setRating={setRating} />
+      <Input placeholder="Поиск..."/>
+      <Textarea placeholder="текст"/>
     </>
   );
 };

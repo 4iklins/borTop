@@ -3,13 +3,13 @@ import styles from "./Sidebar.module.css";
 import cn from "classnames";
 import { Menu } from '../Menu/Menu';
 import Logo from '../logo.svg';
+import { Search } from "@/components";
 
 export const Sidebar = ({ className }: SidebarProps): JSX.Element => {
   return (
-
     <div className={cn(styles.wrapper, className)}>
       <Logo />
-      <div>Поиск</div>
+      <Search/>
       <Menu />
     </div>
   );
