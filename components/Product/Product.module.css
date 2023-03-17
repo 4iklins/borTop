@@ -1,3 +1,86 @@
 .product {
-  
+	display: grid;
+	grid-template-columns: [start] 70px [imageend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [price] auto [priceend] 40px [credit] auto [creditend] 40px [rating] auto [end];
+	padding: 30px;
+}
+
+.image {
+	grid-row: 1 / span 2;
+	grid-column: start / imageend;
+}
+
+.title,
+.categories {
+	grid-column: titlestart / middle;
+}
+
+.price,
+.priceTitle {
+	grid-column: price / priceend;
+}
+
+.credit,
+.creditTitle {
+	grid-column: credit / creditend;
+}
+
+.rating,
+.review {
+	grid-column: rating / end;
+}
+
+.description {
+	grid-column: start / end;
+}
+
+.product hr {
+	grid-column: start / end;
+	width: 100%;
+}
+
+.characteristicsBlock {
+	grid-column: start / middle;
+	margin-right: 60px;
+}
+
+.advantagesBlock {
+	grid-column: middle / end;
+}
+
+.actions {
+	grid-column: start / end;
+}
+
+.characteristics li {
+	display: flex;
+	align-items: center;
+}
+
+.dot {
+	display: inline-block;
+	flex-grow: 1;
+	margin: 0 15px;
+	border-top: 1px dotted #C4C4C4;
+}
+
+.advantages {
+	padding-left: 15px;
+	border-left: 3px solid var(--green);
+}
+
+.disadvantages {
+	padding-left: 15px;
+	border-left: 3px solid var(--red);
+}
+
+.image img {
+	border-radius: 5px;
+}
+
+.price {
+	display: flex;
+	align-items: center;
+	align-self: flex-end;
+	font-size: 20px;
+	line-height: 27px;
 }

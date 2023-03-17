@@ -1,6 +1,6 @@
 import { BorPageProps } from "./BorPage.props";
 import styles from "./BorPage.module.css";
-import { Htag, Tag, HhData, Advantages, Ptag, Sort } from '@/components';
+import { Htag, Tag, HhData, Advantages, Product, Sort } from '@/components';
 import { menuCategory } from "@/interfaces/page.interface";
 import { SortEnum } from '@/components/Sort/Sort.props';
 import { useReducer } from 'react';
@@ -13,7 +13,6 @@ export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps
   const setSort = (sort: SortEnum) => {
     dispatch({ type: sort });
   };
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.head}>
@@ -21,8 +20,8 @@ export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps
         {sortedProducts && <Tag color='gray' size='large'>{sortedProducts.length}</Tag>}
         <Sort sort={sort} setSort={setSort} />
       </div>
-      <ul>
-        {products && products.map(p => <li key={p._id}>{p.title}</li>)}
+      <ul className={styles.productList}>
+        {products && products.map(p => <li key={p._id}><Product product={p}/></li>)}
       </ul>
       {firstCategory == menuCategory.Courses && page && page.hh && <HhData title={page.category} {...page.hh} />}
       {page.advantages && page.advantages.length != 0 && 
