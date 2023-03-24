@@ -7,7 +7,6 @@ import { firstLevelMenu } from '@/helpers/helper';
 import { menuCategory } from "@/interfaces/page.interface";
 
 const Type = ({menu, firstCategory}: TypeProps) => {
-  debugger
   return (
     <div>
       {firstCategory && <div>Type: {firstCategory}</div>}

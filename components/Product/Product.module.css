@@ -31,11 +31,19 @@
 
 .description {
 	grid-column: start / end;
+	margin-bottom: 15px;
 }
 
-.product hr {
+.hr {
 	grid-column: start / end;
 	width: 100%;
+	margin-block-start: 20px;
+	margin-block-end: 20px;
+}
+
+.hr1,
+.hr2 {
+	grid-column: start / end;
 }
 
 .characteristicsBlock {
@@ -44,7 +52,10 @@
 }
 
 .advantagesBlock {
+	display: flex;
+	flex-direction: column;
 	grid-column: middle / end;
+	justify-content: space-between;
 }
 
 .actions {
@@ -77,10 +88,229 @@
 	border-radius: 5px;
 }
 
+.title {
+	align-self: flex-end;
+}
+
 .price {
 	display: flex;
 	align-items: center;
 	align-self: flex-end;
 	font-size: 20px;
 	line-height: 27px;
+}
+
+.oldPrice {
+	margin-left: 5px;
+}
+
+.credit {
+	align-self: flex-end;
+	font-size: 20px;
+	line-height: 27px;
+}
+
+.credit span {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.rating {
+	align-self: flex-end;
+}
+
+.category,
+.tag {
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+.priceTitle,
+.creditTitle,
+.review {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.characteristicName,
+.advantagesTitle {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 32px;
+}
+
+.characteristicValue {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 22px;
+}
+
+.actions button {
+	margin-right: 20px;
+}
+
+.closed {
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.opened {
+	height: auto;
+	padding: 30px;
+}
+
+.reviews {
+	margin-top: -5px;
+}
+
+@media screen and (max-width: 1330px) {
+	.product {
+		grid-template-areas:
+			"image . title title title title title"
+			"image . categories categories categories categories categories"
+			". . price . credit . rating"
+			". . priceTitle . creditTitle . review"
+			"hr1 hr1 hr1 hr1 hr1 hr1 hr1"
+			"description description description description description description description"
+			"characteristicsBlock characteristicsBlock characteristicsBlock characteristicsBlock characteristicsBlock characteristicsBlock characteristicsBlock"
+			"advantagesBlock advantagesBlock advantagesBlock advantagesBlock advantagesBlock advantagesBlock advantagesBlock"
+			"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+			"actions actions actions actions actions actions actions";
+		grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+	}
+
+	.image {
+		grid-area: image;
+	}
+
+	.title {
+		grid-area: title;
+	}
+
+	.categories {
+		grid-area: categories;
+	}
+
+	.price {
+		grid-area: price;
+	}
+
+	.credit {
+		grid-area: credit;
+	}
+
+	.rating {
+		grid-area: rating;
+	}
+
+	.priceTitle {
+		grid-area: priceTitle;
+	}
+
+	.creditTitle {
+		grid-area: creditTitle;
+	}
+
+	.review {
+		grid-area: review;
+	}
+
+	.hr1 {
+		grid-area: hr1;
+	}
+
+	.hr2 {
+		grid-area: hr2;
+	}
+
+	.description {
+		grid-area: description;
+	}
+
+	.characteristicsBlock {
+		grid-area: characteristicsBlock;
+		margin-right: 0;
+		margin-bottom: 20px;
+	}
+
+	.advantagesBlock {
+		grid-area: advantagesBlock;
+	}
+
+	.actions {
+		grid-area: actions;
+	}
+
+	.advantages {
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 960px) {
+	.product {
+		grid-template-areas:
+			"image . title"
+			"image . categories"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"review review rating"
+			"hr1 hr1 hr1"
+			"description description description"
+			"characteristicsBlock characteristicsBlock characteristicsBlock"
+			"advantagesBlock advantagesBlock advantagesBlock"
+			"hr2 hr2 hr2"
+			"actions actions actions";
+		grid-template-columns: 70px 30px 1fr;
+	}
+
+	.categories {
+		margin-bottom: 10px;
+	}
+
+	.price,
+	.credit,
+	.rating {
+		height: 35px;
+	}
+
+	.credit,
+	.rating {
+		display: flex;
+		align-items: center;
+	}
+
+	.priceTitle,
+	.creditTitle,
+	.review {
+		align-self: center;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.product {
+		grid-template-areas:
+			"title title title"
+			"image . categories"
+			"image . categories"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"review review rating"
+			"hr1 hr1 hr1"
+			"description description description"
+			"characteristicsBlock characteristicsBlock characteristicsBlock"
+			"advantagesBlock advantagesBlock advantagesBlock"
+			"hr2 hr2 hr2"
+			"actions actions actions";
+	}
+
+	.title {
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 410px) {
+	.actions button:first-child {
+		margin-bottom: 10px;
+	}
 }

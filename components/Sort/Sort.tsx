@@ -5,7 +5,7 @@ import SortIcon from './sort.svg';
 
 export const Sort = ({ sort, setSort, className }: SortProps): JSX.Element => {
   return (
-    <div className={styles.sort}>
+    <div className={cn(styles.sort, className)}>
       <div className={cn(styles.sortRating, {
         [styles.sortActive]: sort == SortEnum.Rating
       })}

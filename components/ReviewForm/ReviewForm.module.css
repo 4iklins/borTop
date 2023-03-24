@@ -1,0 +1,80 @@
+.reviewForm {
+	display: grid;
+	grid-template-columns: [start] auto auto 1fr [end];
+	gap: 20px 30px;
+	justify-content: left;
+	font-size: 14px;
+}
+
+.rate {
+	display: flex;
+	justify-self: end;
+}
+
+.rate > span {
+	margin-right: 20px;
+}
+
+.text {
+	grid-column: start / end;
+}
+
+.button {
+	display: flex;
+	grid-column: start / end;
+	align-items: center;
+}
+
+.button > span {
+	margin-left: 15px;
+}
+
+.succes {
+	position: relative;
+	grid-column: start / end;
+	padding: 15px;
+	color: var(--green);
+	background-color: var(--light-green);
+	border-radius: 5px;
+}
+
+.succes svg {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1100px) {
+	.reviewForm {
+		grid-template-columns: [start] auto [nameend] 1fr [end];
+	}
+
+	.title {
+		grid-column: start / nameend;
+	}
+
+	.rate {
+		grid-row: 1 / span 2;
+		grid-column: nameend / end;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.reviewForm {
+		grid-template-columns: [start] 1fr [end];
+	}
+
+	.title {
+		grid-column: start / end;
+	}
+
+	.rate {
+		grid-row: 4 / 5;
+		grid-column: start / end;
+	}
+
+	.button > span {
+		font-size: 10px;
+	}
+}

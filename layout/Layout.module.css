@@ -33,7 +33,7 @@
 			"header header header"
 			". body ."
 			"footer footer footer";
-		grid-template-columns: 10px minmax(300px, 1fr) 10px;
+		grid-template-columns: 15px 1fr 15px;
 		gap: 0;
 	}
 

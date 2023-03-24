@@ -2,6 +2,7 @@
 	padding: 8px 12px;
 	font-family: var(--font-family);
 	color: var(--black);
+	resize: none;
 	border: none;
 	border-radius: 5px;
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);

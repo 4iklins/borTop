@@ -10,7 +10,6 @@ import { menuCategory } from "@/interfaces/page.interface";
 import { BorPageComponent } from '@/page-components/BorPage/BorPage.component';
 
 const BorPage = ({ menu, page, products, firstCategory }: BorPageProps) => {
-
   return (
     <BorPageComponent firstCategory={firstCategory} page={page} products={products} />
   );

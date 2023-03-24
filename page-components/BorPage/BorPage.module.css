@@ -43,3 +43,13 @@
 	font-weight: 500;
 	line-height: 27px;
 }
+
+@media screen and (max-width: 870px) {
+	.head {
+		grid-template-columns: auto 1fr;
+	}
+
+	.sort {
+		grid-column: 1 / -1;
+	}
+}

@@ -1,3 +1,7 @@
+.rating span:first-child .star svg {
+	margin-left: 0;
+}
+
 .star svg {
 	margin-left: 5px;
 }
