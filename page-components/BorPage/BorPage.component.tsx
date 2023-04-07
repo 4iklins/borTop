@@ -7,6 +7,7 @@ import { useReducer } from 'react';
 import { sortReducer } from '../sort.reducer';
 import HTMLReactParser from "html-react-parser";
 
+
 export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps): JSX.Element => {
 
   const [{ products: sortedProducts, sort }, dispatch] = useReducer(sortReducer, { sort: SortEnum.Rating, products });
@@ -21,7 +22,7 @@ export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps
         <Sort className={styles.sort} sort={sort} setSort={setSort} />
       </div>
       <ul className={styles.productList}>
-        {products && products.map(p => <li key={p._id}><Product product={p}/></li>)}
+        {sortedProducts && sortedProducts.map(p => <li key={p._id}><Product product={p}/></li>)}
       </ul>
       {firstCategory == menuCategory.Courses && page && page.hh && <HhData title={page.category} {...page.hh} />}
       {page.advantages && page.advantages.length != 0 && 
