@@ -132,6 +132,10 @@
 	line-height: 19px;
 }
 
+.review a {
+  color:var(--primary);
+}
+
 .characteristicName,
 .advantagesTitle {
 	font-size: 16px;

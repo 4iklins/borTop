@@ -1,3 +1,7 @@
+.rating {
+  position: relative;
+}
+
 .rating span:first-child .star svg {
 	margin-left: 0;
 }
@@ -20,4 +24,17 @@
 
 .star svg:focus-visible {
 	transform: scale(1.2);
+}
+
+.error svg{
+  stroke: var(--red);
+}
+
+.errorMessage {
+  color: var(--red);
+  position:absolute;
+  width: 100%;
+  left: 0;
+  top: 20px;
+  font-size: 13px;
 }

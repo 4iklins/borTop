@@ -4,13 +4,19 @@ import cn from "classnames";
 import { Button, Card, Htag, Ptag, Rating, Tag, Review, ReviewForm } from "@/components";
 import {declOfNum, priceRu} from '@/helpers/helper';
 import Image from "next/image";
-import { useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 
 export const Product = ({product, className}: ProductProps): JSX.Element => {
-  const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
+  const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+  const reviewRef = useRef<HTMLDivElement>(null);
   const toggleReview = () => {
-    setIsReviewOpened(!isReviewOpened)
-  }
+    setIsReviewOpened(!isReviewOpened);
+  };
+  const scrollToReview = (e:MouseEvent) => {
+    e.preventDefault();
+    setIsReviewOpened(true);
+    reviewRef.current?.scrollIntoView({behavior:"smooth",block:"start"});
+  };
 
 	return (
     <>
@@ -29,10 +35,10 @@ export const Product = ({product, className}: ProductProps): JSX.Element => {
       </div>
       <div className={styles.credit}>{priceRu(product.credit)}<span>/мес</span></div>
       <div className={styles.rating}><Rating rating={product.reviewAvg ?? product.initialRating}/></div>
-      <div className={styles.categories}>{product.categories.map(c => <Tag className={styles.category} color="ghost">{c}</Tag>)}</div>
+      <div className={styles.categories}>{product.categories.map(c => <Tag key={c} className={styles.category} color="ghost">{c}</Tag>)}</div>
       <div className={styles.priceTitle}>цена</div>
       <div className={styles.creditTitle}>в кредит</div>
-      <div className={styles.review}>{product.reviewCount} {declOfNum(product.reviewCount,['отзыв','отзыва','отзывов'])}</div>
+      <div className={styles.review}><a href="#ref" onClick={scrollToReview}>{product.reviewCount} {declOfNum(product.reviewCount,['отзыв','отзыва','отзывов'])}</a></div>
       <hr className={cn(styles.hr,styles.hr1)} color="#EBEBEB"/>
       <Ptag className={styles.description} size="medium">{product.description}</Ptag>
 
@@ -44,7 +50,7 @@ export const Product = ({product, className}: ProductProps): JSX.Element => {
             <span className={styles.characteristicValue}>{c.value}</span>
           </li>)}
         </ul>
-        <div className={styles.tags}>{product.tags.map(t => <Tag className={styles.tag} color="ghost">{t}</Tag>)}</div>
+        <div className={styles.tags}>{product.tags.map(t => <Tag key={t} className={styles.tag} color="ghost">{t}</Tag>)}</div>
       </div>
 
       <div className={styles.advantagesBlock}>
@@ -63,7 +69,7 @@ export const Product = ({product, className}: ProductProps): JSX.Element => {
         <Button color="ghost" arrow={isReviewOpened ? "down":"right"} onClick={product.reviews.length > 0 ? toggleReview : undefined}>Читать отзывы</Button>
       </div>
 		</Card> 
-    <Card color="blue" className={cn(styles.reviews,{
+    <Card color="blue" ref={reviewRef} className={cn(styles.reviews,{
       [styles.opened]: isReviewOpened,
       [styles.closed]: !isReviewOpened
     })}>

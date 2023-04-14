@@ -8,6 +8,7 @@ import { ProductsModel } from '@/interfaces/products.interface';
 import { firstLevelMenu } from '@/helpers/helper';
 import { menuCategory } from "@/interfaces/page.interface";
 import { BorPageComponent } from '@/page-components/BorPage/BorPage.component';
+import { API } from "@/helpers/api";
 
 const BorPage = ({ menu, page, products, firstCategory }: BorPageProps) => {
   return (
@@ -19,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = [];
 
   for (const firstLevelItem of firstLevelMenu) {
-    const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', { firstCategory: firstLevelItem.id });
+    const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, { firstCategory: firstLevelItem.id });
     paths = paths.concat(menu.flatMap(menuItem => menuItem.pages.map(page => `/${firstLevelItem.route}/${page.alias}`)));
   }
 
@@ -43,15 +44,15 @@ export const getStaticProps: GetStaticProps<BorPageProps> = async ({ params }: G
   }
   console.log(params);
   try {
-    const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', { firstCategory: firstCategory.id });
+    const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, { firstCategory: firstCategory.id });
     console.log(menu);
     if (menu.length == 0) {
       return {
         notFound: true
       };
     }
-    const { data: page } = await axios.get<PageModel>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/byAlias/' + params.alias);
-    const { data: products } = await axios.post<ProductsModel[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/product/find', { category: page.category, limit: 10 });
+    const { data: page } = await axios.get<PageModel>(API.topPage.alias + params.alias);
+    const { data: products } = await axios.post<ProductsModel[]>(API.product.find, { category: page.category, limit: 10 });
     return {
       props: {
         menu,

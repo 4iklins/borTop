@@ -29,21 +29,35 @@
 	margin-left: 15px;
 }
 
-.succes {
-	position: relative;
-	grid-column: start / end;
-	padding: 15px;
-	color: var(--green);
-	background-color: var(--light-green);
-	border-radius: 5px;
+.popup {
+  position: relative;
+  grid-column: start / end;
+  padding: 15px;
+  border-radius: 5px;
 }
 
-.succes svg {
+.popup svg {
 	position: absolute;
 	top: 15px;
 	right: 15px;
 	cursor: pointer;
 }
+
+.succes {
+	color: var(--green);
+	background-color: var(--light-green);
+}
+
+.error {
+  color: var(--red);
+  background-color: var(--light-red);
+}
+
+.error path {
+  stroke: var(--red)
+}
+
+
 
 @media screen and (max-width: 1100px) {
 	.reviewForm {

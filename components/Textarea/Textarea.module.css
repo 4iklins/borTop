@@ -6,8 +6,30 @@
 	border: none;
 	border-radius: 5px;
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
+  width:100%;
+}
+
+.wrapper {
+  position: relative;
 }
 
 .textarea:focus-visible {
 	outline: thin groove var(--primary);
+}
+
+.error {
+  outline: thin groove var(--red);
+}
+
+.error:focus-visible {
+  outline: thin groove var(--primary);
+}
+
+.errorMessage {
+  color: var(--red);
+  position:absolute;
+  width: 100%;
+  left: 0;
+  top: 51px;
+  font-size: 13px;
 }

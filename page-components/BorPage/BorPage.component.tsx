@@ -3,7 +3,7 @@ import styles from "./BorPage.module.css";
 import { Htag, Tag, HhData, Advantages, Product, Sort } from '@/components';
 import { menuCategory } from "@/interfaces/page.interface";
 import { SortEnum } from '@/components/Sort/Sort.props';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { sortReducer } from '../sort.reducer';
 import HTMLReactParser from "html-react-parser";
 
@@ -14,6 +14,11 @@ export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps
   const setSort = (sort: SortEnum) => {
     dispatch({ type: sort });
   };
+
+  useEffect(()=> {
+    dispatch({type:"reset", products});
+  },[products]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.head}>
