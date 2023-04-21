@@ -4,9 +4,10 @@ import cn from "classnames";
 import { Button, Card, Htag, Ptag, Rating, Tag, Review, ReviewForm } from "@/components";
 import {declOfNum, priceRu} from '@/helpers/helper';
 import Image from "next/image";
-import { MouseEvent, useRef, useState } from "react";
+import { ForwardedRef, MouseEvent, forwardRef, useRef, useState } from "react";
+import {motion} from 'framer-motion';
 
-export const Product = ({product, className}: ProductProps): JSX.Element => {
+export const Product = motion(forwardRef(({product, className}: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
   const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
   const reviewRef = useRef<HTMLDivElement>(null);
   const toggleReview = () => {
@@ -18,9 +19,18 @@ export const Product = ({product, className}: ProductProps): JSX.Element => {
     reviewRef.current?.scrollIntoView({behavior:"smooth",block:"start"});
   };
 
+  const variants = {
+    visible: {
+      height:'auto'
+    },
+    hidden: {
+      height:0
+    }
+  };
+
 	return (
-    <>
-		<Card className={cn(styles.product, className)}>
+    <div ref={ref} className={className}>
+		<Card className={styles.product}>
 			<div className={styles.image}>
         <Image src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
         alt={product.title}
@@ -69,15 +79,21 @@ export const Product = ({product, className}: ProductProps): JSX.Element => {
         <Button color="ghost" arrow={isReviewOpened ? "down":"right"} onClick={product.reviews.length > 0 ? toggleReview : undefined}>Читать отзывы</Button>
       </div>
 		</Card> 
-    <Card color="blue" ref={reviewRef} className={cn(styles.reviews,{
-      [styles.opened]: isReviewOpened,
-      [styles.closed]: !isReviewOpened
-    })}>
+    <motion.div
+    className={styles.reviewWrapper}
+    layout
+    variants={variants}
+    initial={'hidden'}
+    animate={isReviewOpened ? 'visible' : 'hidden'}
+    >
+      <Card color="blue" ref={reviewRef} className={cn(styles.reviews)}>
       <ul>
         {product.reviews.map(r => <li key={r._id}><Review review={r}/></li>)}
       </ul>
       <ReviewForm productId={product._id}/>
     </Card>
-    </>
+    </motion.div>
+
+    </div>
 	);
-};
+}));

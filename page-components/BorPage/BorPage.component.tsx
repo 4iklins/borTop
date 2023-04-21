@@ -27,7 +27,7 @@ export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps
         <Sort className={styles.sort} sort={sort} setSort={setSort} />
       </div>
       <ul className={styles.productList}>
-        {sortedProducts && sortedProducts.map(p => <li key={p._id}><Product product={p}/></li>)}
+        {sortedProducts && sortedProducts.map(p => <li key={p._id}><Product product={p} layout/></li>)}
       </ul>
       {firstCategory == menuCategory.Courses && page && page.hh && <HhData title={page.category} {...page.hh} />}
       {page.advantages && page.advantages.length != 0 && 

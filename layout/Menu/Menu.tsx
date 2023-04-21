@@ -6,6 +6,7 @@ import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { firstLevelMenu } from '@/helpers/helper';
+import {motion} from 'framer-motion';
 
 
 
@@ -20,6 +21,34 @@ export const Menu = (): JSX.Element => {
       }
       return m;
     }));
+  };
+
+  const variants = {
+    visible: {
+      marginTop: 13,
+      marginBottom: 20,
+      transition: {
+        
+        staggerChildren: 0.1
+      }
+    },
+    hidden: {
+      marginTop: 0,
+      marginBottom: 0
+    }
+  };
+
+  const variantsChildren = {
+    visible: {
+      opacity: 1,
+      height: 'auto',
+      marginBottom: 10
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+      marginBottom: 0
+    }
   };
 
 
@@ -54,9 +83,14 @@ export const Menu = (): JSX.Element => {
           <li className={styles.secondLevelMenuItem} key={menuItem._id.secondCategory}>
             <div className={cn(styles.secondLevelMenuHead)} 
               onClick={()=> openSecondLevelMenu(menuItem._id.secondCategory)}>{menuItem._id.secondCategory}</div>
-            <div className={cn(styles.thirdLevelMenu,{[styles.thirdLevelMenuOpen]: menuItem.isOpen})}>
+            <motion.div className={cn(styles.thirdLevelMenu)}
+            layout
+            variants={variants}
+            initial={'hidden'}
+            animate={menuItem.isOpen ? 'visible':'hidden'}
+            >
               {buildThirdLevelMenu(FirsLevelMenuItem, menuItem.pages)}
-            </div>
+            </motion.div>
           </li>
         );})}
       </ul>
@@ -67,14 +101,16 @@ export const Menu = (): JSX.Element => {
     return(
         <ul>
           {pages.map(page => (
-            <li className={cn(styles.thirdLevelMenuItem,{
+            <motion.li className={cn(styles.thirdLevelMenuItem,{
               [styles.thirdLevelMenuItemActive]:`/${FirsLevelMenuItem.route}/${page.alias}` == router.asPath
             })} 
-              key={page.alias}>
+              key={page.alias}
+              variants={variantsChildren}
+              >
               <Link href={`/${FirsLevelMenuItem.route}/${page.alias}`}>
                 {page.category}
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
     );

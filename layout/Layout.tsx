@@ -4,6 +4,7 @@ import { Footer } from "./Footer/Footer";
 import { Sidebar } from "./Sidebar/Sidebar";
 import styles from "./Layout.module.css";
 import cn from "classnames";
+import { Up } from "@/components";
 
 export const Layout = ({ children, ...props }: LayoutProps): JSX.Element => {
   return (
@@ -14,6 +15,7 @@ export const Layout = ({ children, ...props }: LayoutProps): JSX.Element => {
         {children}
       </div>
       <Footer className={styles.footer} />
+      <Up/>
     </div>
   );
 };

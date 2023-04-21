@@ -14,3 +14,5 @@ export { Search } from './Search/Search';
 export { Product } from './Product/Product';
 export { Review } from './Review/Review';
 export { ReviewForm } from './ReviewForm/ReviewForm';
+export { Up } from './Up/Up';
+export { ButtonIcon} from './ButtonIcon/ButtonIcon';
