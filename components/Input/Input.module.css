@@ -2,7 +2,7 @@
 	padding: 8px 12px;
 	font-family: var(--font-family);
 	color: var(--black);
-	border:none;
+	border: none;
 	border-radius: 5px;
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
 }
@@ -12,22 +12,22 @@
 }
 
 .wrapper {
-  position: relative;
+	position: relative;
 }
 
 .error {
-  outline: thin groove var(--red);
+	outline: thin groove var(--red);
 }
 
 .error:focus-visible {
-  outline: thin groove var(--primary);
+	outline: thin groove var(--primary);
 }
 
 .errorMessage {
-  color: var(--red);
-  position:absolute;
-  width: 100%;
-  left: 0;
-  top: 33px;
-  font-size: 13px;
+	position: absolute;
+	top: 33px;
+	left: 0;
+	width: 100%;
+	font-size: 13px;
+	color: var(--red);
 }

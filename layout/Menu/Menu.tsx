@@ -86,7 +86,7 @@ export const Menu = (): JSX.Element => {
             <motion.div className={cn(styles.thirdLevelMenu)}
             layout
             variants={variants}
-            initial={'hidden'}
+            initial={menuItem.isOpen ? 'visible':'hidden'}
             animate={menuItem.isOpen ? 'visible':'hidden'}
             >
               {buildThirdLevelMenu(FirsLevelMenuItem, menuItem.pages)}

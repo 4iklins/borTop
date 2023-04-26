@@ -1,5 +1,5 @@
 .wrapper {
-  position: relative;
+	position: relative;
 	display: grid;
 	grid-template-areas:
 		". header header ."
@@ -12,12 +12,12 @@
 }
 
 .header {
-	display: none;
 	grid-area: header;
 }
 
 .sidebar {
 	grid-area: sidebar;
+	margin-top: 34px;
 }
 
 .body {
@@ -31,15 +31,11 @@
 @media (max-width: 765px) {
 	.wrapper {
 		grid-template-areas:
-			"header header header"
+			". header ."
 			". body ."
 			"footer footer footer";
 		grid-template-columns: 15px 1fr 15px;
 		gap: 0;
-	}
-
-	.header {
-		display: block;
 	}
 
 	.sidebar {

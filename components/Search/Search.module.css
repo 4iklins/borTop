@@ -7,6 +7,10 @@
 	width: 100%;
 }
 
+.searchInput input {
+	width: 100%;
+}
+
 .searchButton {
 	position: absolute;
 	top: 2px;

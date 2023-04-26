@@ -4,7 +4,7 @@ import styles from "./ButtonIcon.module.css";
 import { icons } from "./ButtonIcon.props";
 
 export const ButtonIcon = ({ color, icon, className, ...props }: ButtonIconProps): JSX.Element => {
-  const IconComponent = icons[icon]
+  const IconComponent = icons[icon];
   return (
     <button className={cn(styles.button, className, {
       [styles.primary]: color == 'primary',

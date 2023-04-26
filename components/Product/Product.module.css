@@ -133,7 +133,7 @@
 }
 
 .review a {
-  color:var(--primary);
+	color: var(--primary);
 }
 
 .characteristicName,
@@ -154,12 +154,12 @@
 }
 
 .reviewWrapper {
-  overflow: hidden;
-  margin-top: -5px;
+	margin-top: -5px;
+	overflow: hidden;
 }
 
 .reviews {
-  padding: 30px;
+	padding: 30px;
 	margin-top: -5px;
 }
 
