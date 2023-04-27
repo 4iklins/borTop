@@ -25,12 +25,13 @@ ul {
 :root {
 	--black: #3B434E;
 	--light-gray: #EBEBEB;
+	--dark-gray: #6C7077;
 	--white: white;
-	--primary: #FC007E;
+	--primary: #DB006D;
 	--primary-hover: #AF0058;
 	--red: #FC836D;
 	--light-red: #FFBBAF;
-	--green: #1DC37E;
+	--green: #107A4F;
 	--light-green: #C8F8E4;
 	--font-family: "Noto Sans", sans-serif;
 }

@@ -1,6 +1,6 @@
 import styles from "./Menu.module.css";
 import cn from "classnames";
-import { useContext } from 'react';
+import { KeyboardEvent, useContext } from 'react';
 import { AppContext } from '@/context/app.context';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import Link from "next/link";
@@ -21,6 +21,13 @@ export const Menu = (): JSX.Element => {
       }
       return m;
     }));
+  };
+
+  const openSecondLevelKey = (e:KeyboardEvent,secondCategory:string) => {
+    if(e.code == "Space" || e.code == "Enter"){
+      e.preventDefault();
+      openSecondLevelMenu(secondCategory);
+    }
   };
 
   const variants = {
@@ -81,15 +88,20 @@ export const Menu = (): JSX.Element => {
           }
           return (
           <li className={styles.secondLevelMenuItem} key={menuItem._id.secondCategory}>
-            <div className={cn(styles.secondLevelMenuHead)} 
-              onClick={()=> openSecondLevelMenu(menuItem._id.secondCategory)}>{menuItem._id.secondCategory}</div>
+            <div
+            className={cn(styles.secondLevelMenuHead)} 
+            onClick={()=> openSecondLevelMenu(menuItem._id.secondCategory)}
+            tabIndex={0}
+            onKeyDown={(e)=>openSecondLevelKey(e,menuItem._id.secondCategory)}
+            >{menuItem._id.secondCategory}
+            </div>
             <motion.div className={cn(styles.thirdLevelMenu)}
             layout
             variants={variants}
             initial={menuItem.isOpen ? 'visible':'hidden'}
             animate={menuItem.isOpen ? 'visible':'hidden'}
             >
-              {buildThirdLevelMenu(FirsLevelMenuItem, menuItem.pages)}
+              {buildThirdLevelMenu(FirsLevelMenuItem.route, menuItem.pages, menuItem.isOpen ?? false)}
             </motion.div>
           </li>
         );})}
@@ -97,17 +109,17 @@ export const Menu = (): JSX.Element => {
     );
   };
 
-  const buildThirdLevelMenu = (FirsLevelMenuItem:FirstLevelMenuItem,pages:PageItem[]) => {
+  const buildThirdLevelMenu = (route:string,pages:PageItem[],isOpen:boolean) => {
     return(
         <ul>
           {pages.map(page => (
             <motion.li className={cn(styles.thirdLevelMenuItem,{
-              [styles.thirdLevelMenuItemActive]:`/${FirsLevelMenuItem.route}/${page.alias}` == router.asPath
+              [styles.thirdLevelMenuItemActive]:`/${route}/${page.alias}` == router.asPath
             })} 
               key={page.alias}
               variants={variantsChildren}
               >
-              <Link href={`/${FirsLevelMenuItem.route}/${page.alias}`}>
+              <Link href={`/${route}/${page.alias}`} tabIndex={isOpen ? 0 : -1}>
                 {page.category}
               </Link>
             </motion.li>

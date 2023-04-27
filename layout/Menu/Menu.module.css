@@ -1,9 +1,9 @@
 .firstLevelMenu {
-	color: #787D85;
+	color: var(--dark-gray);
 }
 
 .firstLevelMenu svg {
-	fill: #787D85;
+	fill: var(--dark-gray);
 }
 
 .firstLevelMenuItem {

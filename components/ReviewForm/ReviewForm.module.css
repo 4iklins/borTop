@@ -44,12 +44,12 @@
 }
 
 .succes {
-	color: var(--green);
+	color: var(--black);
 	background-color: var(--light-green);
 }
 
 .error {
-	color: var(--red);
+	color: var(--black);
 	background-color: var(--light-red);
 }
 
