@@ -9,7 +9,7 @@ export const Up = (): JSX.Element => {
   const currentScrollY = useScrollY();
   const controls = useAnimation();
   useEffect(() => {
-    controls.start({opacity: currentScrollY / document.body.scrollHeight});
+    controls.start({opacity: currentScrollY / document.body.scrollHeight, height:currentScrollY == 0 ? 0 : "auto"});
   },[currentScrollY,controls]);
 
   const handleUp = () => {
@@ -22,7 +22,7 @@ export const Up = (): JSX.Element => {
   return (
     <motion.div className={styles.up}
     animate={controls}
-    initial={{opacity:0}}
+    initial={{opacity:0, height:0}}
     >
       <ButtonIcon color='primary' icon='up' onClick={handleUp}/>
     </motion.div>

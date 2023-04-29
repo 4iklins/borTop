@@ -161,6 +161,7 @@
 .reviews {
 	padding: 30px;
 	margin-top: -5px;
+  outline: none;
 }
 
 @media screen and (max-width: 1330px) {

@@ -12,7 +12,7 @@ import axios from "axios";
 import { API } from "@/helpers/api";
 import { useState } from "react";
 
-export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
+export const ReviewForm = ({ productId, className, isOpen, ...props }: ReviewFormProps): JSX.Element => {
 	const { register, control, handleSubmit, formState:{errors}, reset } = useForm<IReviewForm>();
   const [isSucces, setIsSucces] = useState<boolean>(false);
   const [isError, setIsError] = useState<string>();
@@ -31,16 +31,18 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className={cn(styles.reviewForm, className)}>
+		<form onSubmit={handleSubmit(onSubmit)} className={cn(styles.reviewForm, className)} {...props}>
 			<Input {...register("name", {required:{value:true, message:"Заполните Имя"}})}
       error={errors.name}
       className={styles.name}
       placeholder="Имя"
+      tabIndex={isOpen ? 0 : -1}
       />
 			<Input {...register("title", {required:{value:true, message:"Заполните Заголовок"}})}
       error={errors.title}
       className={styles.title}
       placeholder="Заголовок отзыва"
+      tabIndex={isOpen ? 0 : -1}
       />
 			<div className={styles.rate}>
 				<span>Оценка:</span>
@@ -54,6 +56,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
             isEditable={true}
             setRating={field.onChange}
             error={errors.rating}
+            tabIndex={isOpen ? 0 : -1}
             />
 					)}
 				/>
@@ -62,19 +65,20 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
       error={errors.description}
       className={styles.text}
       placeholder="Текст отзыва"
+      tabIndex={isOpen ? 0 : -1}
       />
 			<div className={styles.button}>
-				<Button color="primary">Отправить</Button>
+				<Button color="primary" tabIndex={isOpen ? 0 : -1}>Отправить</Button>
 				<span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку.</span>
 			</div>
       {isSucces && <div className={cn(styles.succes, styles.popup)}>
 				<div className={styles.succesTitle}>Ваш отзыв отправлен.</div>
 				<div>Спасибо, ваш отзыв будет опубликован поесле проверки.</div>
-				<CloseIcon onClick={()=>{setIsSucces(false);}}/>
+				<CloseIcon onClick={()=>{setIsSucces(false);}} tabIndex={isOpen ? 0 : -1}/>
 			</div>}
       {isError && <div className={cn(styles.error, styles.popup)}>
 				<div>Что-то пошло не так, обновите страницу.</div>
-				<CloseIcon onClick={()=>{setIsError(undefined);}}/>
+				<CloseIcon onClick={()=>{setIsError(undefined);}} tabIndex={isOpen ? 0 : -1}/>
 			</div>}
 		</form>
 	);

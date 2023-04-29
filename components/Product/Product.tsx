@@ -4,28 +4,41 @@ import cn from "classnames";
 import { Button, Card, Htag, Ptag, Rating, Tag, Review, ReviewForm } from "@/components";
 import {declOfNum, priceRu} from '@/helpers/helper';
 import Image from "next/image";
-import { ForwardedRef, MouseEvent, forwardRef, useRef, useState } from "react";
+import { ForwardedRef, MouseEvent, forwardRef, useEffect, useRef, useState } from "react";
 import {motion} from 'framer-motion';
+import { useAnimation } from "framer-motion";
+import { useScrollY } from "@/hooks/useScrollY";
 
 export const Product = motion(forwardRef(({product, className}: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
   const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
   const reviewRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+  const currentScrollY = useScrollY();
+
+  useEffect( () => {
+    
+    if(isReviewOpened){
+      const scroll = async () => {
+        if(currentScrollY == 0){
+          window.scrollTo({top: 1});
+        }
+        await controls.start({height:'auto'});
+        reviewRef.current?.scrollIntoView({behavior:"smooth",block:"start"});
+      };
+      scroll();
+    } else {
+      controls.start({height:0});
+    }
+  },[isReviewOpened, controls]);
+
   const toggleReview = () => {
     setIsReviewOpened(!isReviewOpened);
   };
+
   const scrollToReview = (e:MouseEvent) => {
     e.preventDefault();
     setIsReviewOpened(true);
-    reviewRef.current?.scrollIntoView({behavior:"smooth",block:"start"});
-  };
-
-  const variants = {
-    visible: {
-      height:'auto'
-    },
-    hidden: {
-      height:0
-    }
+    reviewRef.current?.focus({ preventScroll: true });
   };
 
 	return (
@@ -48,7 +61,10 @@ export const Product = motion(forwardRef(({product, className}: ProductProps, re
       <div className={styles.categories}>{product.categories.map(c => <Tag key={c} className={styles.category} color="ghost">{c}</Tag>)}</div>
       <div className={styles.priceTitle}>цена</div>
       <div className={styles.creditTitle}>в кредит</div>
-      <div className={styles.review}><a href="#ref" onClick={scrollToReview}>{product.reviewCount} {declOfNum(product.reviewCount,['отзыв','отзыва','отзывов'])}</a></div>
+      <div className={styles.review}>
+        <a href="#ref"
+        onClick={scrollToReview}
+        >{product.reviewCount} {declOfNum(product.reviewCount,['отзыв','отзыва','отзывов'])}</a></div>
       <hr className={cn(styles.hr,styles.hr1)} color="#EBEBEB"/>
       <Ptag className={styles.description} size="medium">{product.description}</Ptag>
 
@@ -81,16 +97,15 @@ export const Product = motion(forwardRef(({product, className}: ProductProps, re
 		</Card> 
     <motion.div
     className={styles.reviewWrapper}
+    initial={{height:0}}
+    animate={controls}
     layout
-    variants={variants}
-    initial={'hidden'}
-    animate={isReviewOpened ? 'visible' : 'hidden'}
     >
-      <Card color="blue" ref={reviewRef} className={cn(styles.reviews)}>
+      <Card color="blue" ref={reviewRef} className={cn(styles.reviews)} tabIndex={isReviewOpened ? 0 : -1}>
       <ul>
         {product.reviews.map(r => <li key={r._id}><Review review={r}/></li>)}
       </ul>
-      <ReviewForm productId={product._id}/>
+      <ReviewForm productId={product._id} isOpen={isReviewOpened}/>
     </Card>
     </motion.div>
 

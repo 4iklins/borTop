@@ -49,6 +49,9 @@
 	text-transform: uppercase;
 	cursor: pointer;
 }
+.secondLevelMenuHead:focus-visible {
+  outline-offset: -1px;
+}
 
 .secondLevelMenuHead:hover,
 .secondLevelMenuHeadActive {

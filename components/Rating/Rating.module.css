@@ -18,12 +18,12 @@
 	cursor: pointer;
 }
 
-.star svg:focus {
+.star:focus-visible {
 	outline: none;
 }
 
-.star svg:focus-visible {
-	transform: scale(1.2);
+.star:focus-visible svg {
+	stroke: var(--black);
 }
 
 .error svg {

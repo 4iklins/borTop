@@ -1,5 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { DetailedHTMLProps, FormHTMLAttributes} from 'react';
 
-export interface ReviewFormProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  productId: string
+export interface ReviewFormProps extends DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> {
+  productId: string,
+  isOpen: boolean
 }

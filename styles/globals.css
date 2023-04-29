@@ -14,6 +14,7 @@ body {
 a {
 	color: inherit;
 	text-decoration: none;
+  outline-offset: -1px;
 }
 
 ul {
