@@ -4,9 +4,15 @@
 	gap: 20px;
 }
 
+.sortButton {
+	font-family: var(--font-family);
+	cursor: pointer;
+	background: inherit;
+	border: none;
+}
+
 .sort span {
 	margin-left: 8px;
-	cursor: pointer;
 }
 
 .sortActive {
@@ -16,4 +22,8 @@
 
 .sortActive svg {
 	fill: var(--primary);
+}
+
+.sortName {
+	display: none;
 }

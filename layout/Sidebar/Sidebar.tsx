@@ -9,7 +9,7 @@ export const Sidebar = ({ className }: SidebarProps): JSX.Element => {
   return (
     <div className={cn(styles.wrapper, className)}>
       <Logo />
-      <Search/>
+      <Search />
       <Menu />
     </div>
   );

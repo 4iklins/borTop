@@ -16,9 +16,9 @@ export const Layout = ({ children, ...props }: LayoutProps): JSX.Element => {
     setVisibleSkip(false);
   };
 
-  const skipKey = (e:KeyboardEvent) => {
+  const skipKey = (e: KeyboardEvent) => {
     setVisibleSkip(true);
-    if(e.code == "Space" || e.code == "Enter"){
+    if (e.code == "Space" || e.code == "Enter") {
       e.preventDefault();
       bodyRef.current?.focus();
     }
@@ -26,22 +26,22 @@ export const Layout = ({ children, ...props }: LayoutProps): JSX.Element => {
   };
   return (
     <div className={styles.wrapper} {...props}>
-      <a className={cn(styles.skip,{
+      <a className={cn(styles.skip, {
         [styles.skipDisplay]: visibleSkip
-      })} 
-      href="#"
-      tabIndex={1}
-      onFocus={()=>{setVisibleSkip(true);}}
-      onKeyDown={(e)=>skipKey(e)}
-      onMouseEnter={skipOnMouseEnter}
+      })}
+        href="#"
+        tabIndex={1}
+        onFocus={() => { setVisibleSkip(true); }}
+        onKeyDown={(e) => skipKey(e)}
+        onMouseEnter={skipOnMouseEnter}
       >Перейти к контенту</a>
       <Header className={styles.header} />
       <Sidebar className={styles.sidebar} />
-      <div className={styles.body} ref={bodyRef} tabIndex={0}>
+      <main className={styles.body} ref={bodyRef} tabIndex={0} role='main'>
         {children}
-      </div>
+      </main>
       <Footer className={styles.footer} />
-      <Up/>
+      <Up />
     </div>
   );
 };

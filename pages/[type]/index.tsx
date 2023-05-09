@@ -7,41 +7,41 @@ import { firstLevelMenu } from '@/helpers/helper';
 import { menuCategory } from "@/interfaces/page.interface";
 import { API } from "@/helpers/api";
 
-const Type = ({menu, firstCategory}: TypeProps) => {
+const Type = ({ menu, firstCategory }: TypeProps) => {
   return (
     <div>
       {firstCategory && <div>Type: {firstCategory}</div>}
       <ul>
-				{menu && menu.map(item => <li key={item._id.secondCategory}>{item._id.secondCategory}</li>)}
-			</ul>
+        {menu && menu.map(item => <li key={item._id.secondCategory}>{item._id.secondCategory}</li>)}
+      </ul>
     </div>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  
-	return {
-		paths:firstLevelMenu.map(menuItem => `/${menuItem.route}`),
-		fallback: true
-	};
+
+  return {
+    paths: firstLevelMenu.map(menuItem => `/${menuItem.route}`),
+    fallback: true
+  };
 };
 
 export const getStaticProps: GetStaticProps<TypeProps> = async ({ params }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if (!params) {
-		return {
-			notFound: true
-		};
-	}
+    return {
+      notFound: true
+    };
+  }
 
   const firstCategory = firstLevelMenu.find(menuItem => menuItem.route == params.type);
 
   if (!firstCategory) {
     return {
-			notFound: true
-		};
+      notFound: true
+    };
   }
-  
-  try{
+
+  try {
     const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, { firstCategory: firstCategory.id });
     if (menu.length == 0) {
       return {
@@ -51,13 +51,13 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({ params }: GetS
     return {
       props: {
         menu,
-        firstCategory:firstCategory.id
+        firstCategory: firstCategory.id
       }
     };
   } catch {
     return {
-			notFound: true
-		};
+      notFound: true
+    };
   }
 
 };

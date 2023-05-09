@@ -36,11 +36,13 @@
 	border-radius: 5px;
 }
 
-.popup svg {
+.popup button {
 	position: absolute;
 	top: 15px;
 	right: 15px;
 	cursor: pointer;
+	background: inherit;
+	border: none;
 }
 
 .succes {

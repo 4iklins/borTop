@@ -9,22 +9,22 @@ export const Up = (): JSX.Element => {
   const currentScrollY = useScrollY();
   const controls = useAnimation();
   useEffect(() => {
-    controls.start({opacity: currentScrollY / document.body.scrollHeight, height:currentScrollY == 0 ? 0 : "auto"});
-  },[currentScrollY,controls]);
+    controls.start({ opacity: currentScrollY / document.body.scrollHeight, zIndex: currentScrollY == 0 ? -1 : 2 });
+  }, [currentScrollY, controls]);
 
   const handleUp = () => {
     window.scrollTo({
       top: 0,
-      behavior:'smooth'
+      behavior: 'smooth'
     });
   };
 
   return (
     <motion.div className={styles.up}
-    animate={controls}
-    initial={{opacity:0, height:0}}
+      animate={controls}
+      initial={{ opacity: 0, zIndex: -1 }}
     >
-      <ButtonIcon color='primary' icon='up' onClick={handleUp}/>
+      <ButtonIcon color='primary' icon='up' onClick={handleUp} />
     </motion.div>
   );
 };

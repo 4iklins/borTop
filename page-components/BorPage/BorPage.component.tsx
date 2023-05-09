@@ -15,25 +15,25 @@ export const BorPageComponent = ({ firstCategory, page, products }: BorPageProps
     dispatch({ type: sort });
   };
 
-  useEffect(()=> {
-    dispatch({type:"reset", products});
-  },[products]);
+  useEffect(() => {
+    dispatch({ type: "reset", products });
+  }, [products]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.head}>
         {page && <Htag tag="h1">{page.title}</Htag>}
-        {sortedProducts && <Tag color='gray' size='large'>{sortedProducts.length}</Tag>}
+        {sortedProducts && <Tag color='gray' size='large' aria-label={`Количество продуктов ${sortedProducts.length}`}>{sortedProducts.length}</Tag>}
         <Sort className={styles.sort} sort={sort} setSort={setSort} />
       </div>
       <ul className={styles.productList}>
-        {sortedProducts && sortedProducts.map(p => <li key={p._id}><Product product={p} layout/></li>)}
+        {sortedProducts && sortedProducts.map(p => <li key={p._id}><Product product={p} layout /></li>)}
       </ul>
       {firstCategory == menuCategory.Courses && page && page.hh && <HhData title={page.category} {...page.hh} />}
-      {page.advantages && page.advantages.length != 0 && 
-        <Advantages advantages={page.advantages}/>
+      {page.advantages && page.advantages.length != 0 &&
+        <Advantages advantages={page.advantages} />
       }
-      {page.seoText &&  
+      {page.seoText &&
         <div className={styles.seoText}>
           {HTMLReactParser(`<div>${page.seoText}</div>`)}
         </div>

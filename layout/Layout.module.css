@@ -1,21 +1,22 @@
 .skip {
-  height: 0;
-  padding: 0;
-  background: var(--primary);
-  color: var(--white);
-  position: fixed;
-  top:10px;
-  left: 30px;
-  border-radius:5px;
-  overflow: hidden;
+	position: fixed;
+	top: 10px;
+	left: 30px;
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+	color: var(--white);
+	background: var(--primary);
+	border-radius: 5px;
 }
+
 .skipDisplay {
-  height: auto;
-  padding: 5px;
+	height: auto;
+	padding: 5px;
 }
 
 .skip:focus-visible {
-  background: var(--primary-hover);
+	background: var(--primary-hover);
 }
 
 .wrapper {
@@ -42,7 +43,7 @@
 
 .body {
 	grid-area: body;
-  outline: none;
+	outline: none;
 }
 
 .footer {

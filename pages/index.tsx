@@ -27,8 +27,8 @@ const Home = ({ menu }: HomeProps) => {
       <Tag size='small' color='green'>green</Tag>
       <Tag>empty</Tag>
       <Rating rating={rating} isEditable={true} setRating={setRating} />
-      <Input placeholder="Поиск..."/>
-      <Textarea placeholder="текст"/>
+      <Input placeholder="Поиск..." />
+      <Textarea placeholder="текст" />
     </>
   );
 };

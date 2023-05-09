@@ -12,7 +12,7 @@ export const ButtonIcon = ({ color, icon, className, ...props }: ButtonIconProps
     })}
       {...props}
     >
-      <IconComponent/>
+      <IconComponent />
     </button>
   );
 };

@@ -15,32 +15,32 @@ export const HhData = ({ title, count, juniorSalary, middleSalary, seniorSalary,
         <div className={styles.countTitle}>Всего вакансий</div>
         <div className={styles.count}>{count}</div>
       </Card>
-      <Card color='white'className={styles.salary}>
+      <Card color='white' className={styles.salary}>
         <div className={styles.salaryWrapper}>
           <div className={styles.salaryTitle}>Начальный</div>
           <div className={styles.salaryPrice}>{priceRu(juniorSalary)}</div>
           <div className={styles.salaryRating}>
-            <Star className={styles.filled}/>
-            <Star/>
-            <Star/>
+            <Star className={styles.filled} />
+            <Star />
+            <Star />
           </div>
         </div>
         <div className={styles.salaryWrapper}>
           <div className={styles.salaryTitle}>Средний</div>
           <div className={styles.salaryPrice}>{priceRu(middleSalary)}</div>
           <div className={styles.salaryRating}>
-            <Star className={styles.filled}/>
-            <Star className={styles.filled}/>
-            <Star/>
+            <Star className={styles.filled} />
+            <Star className={styles.filled} />
+            <Star />
           </div>
         </div>
         <div className={styles.salaryWrapper}>
           <div className={styles.salaryTitle}>Профессионал</div>
           <div className={styles.salaryPrice}>{priceRu(seniorSalary)}</div>
           <div className={styles.salaryRating}>
-            <Star className={styles.filled}/>
-            <Star className={styles.filled}/>
-            <Star className={styles.filled}/>
+            <Star className={styles.filled} />
+            <Star className={styles.filled} />
+            <Star className={styles.filled} />
           </div>
         </div>
       </Card>
