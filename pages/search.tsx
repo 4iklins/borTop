@@ -2,10 +2,13 @@ import withLayout from "../HOC/withLayout";
 import axios from 'axios';
 import { MenuItem } from "../interfaces/menu.interface";
 import { GetStaticProps } from 'next';
+import {Error404} from "./404";
 
 const Search = (props: SearchProps) => {
   return (
-    <div>Search</div>
+    <>
+    <Error404/>
+    </>
   );
 };
 

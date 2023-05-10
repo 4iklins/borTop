@@ -44,14 +44,14 @@
 
 .secondLevelMenuHead {
 	padding: 0;
-	border:none;
-	background-color: inherit;
 	font-family: inherit;
 	font-size: 12px;
 	font-weight: 300;
 	line-height: 16px;
 	text-transform: uppercase;
 	cursor: pointer;
+	background-color: inherit;
+	border: none;
 }
 
 .secondLevelMenuHead:focus-visible {

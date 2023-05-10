@@ -9,10 +9,24 @@ import { firstLevelMenu } from '@/helpers/helper';
 import { menuCategory } from "@/interfaces/page.interface";
 import { BorPageComponent } from '@/page-components/BorPage/BorPage.component';
 import { API } from "@/helpers/api";
+import  Head  from "next/head";
+import { Error404 } from "../404";
 
-const BorPage = ({ menu, page, products, firstCategory }: BorPageProps) => {
+const BorPage = ({ page, products, firstCategory }: BorPageProps) => {
+  if(!page || !products) {
+    return <Error404/>;
+  }
   return (
-    <BorPageComponent firstCategory={firstCategory} page={page} products={products} />
+    <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name='description' content={page.metaDescription}/>
+        <meta property="og:title" content={page.metaTitle}/>
+        <meta property='og:description' content={page.metaDescription}/>
+        <meta property='og:type' content='article'/>
+      </Head>
+      <BorPageComponent firstCategory={firstCategory} page={page} products={products} />
+    </>
   );
 };
 
