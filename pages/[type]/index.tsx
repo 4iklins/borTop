@@ -10,7 +10,7 @@ import { CategoryPageComponent } from "@/page-components/CategoryPage/CategoryPa
 import { Error404 } from "../404";
 
 const Type = ({ menu, firstCategory }: TypeProps) => {
-  if(!menu || !firstCategory) {
+  if(!menu) {
     return <Error404/>;
   }
   return (
