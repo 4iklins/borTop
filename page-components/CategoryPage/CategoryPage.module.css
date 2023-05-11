@@ -1,0 +1,14 @@
+.wrapper {
+	position: relative;
+	margin-top: 40px;
+}
+
+.category {
+	padding: 30px;
+}
+
+.categoryList {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 30px;
+}

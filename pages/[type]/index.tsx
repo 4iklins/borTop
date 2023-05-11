@@ -6,15 +6,11 @@ import { ParsedUrlQuery } from 'querystring';
 import { firstLevelMenu } from '@/helpers/helper';
 import { menuCategory } from "@/interfaces/page.interface";
 import { API } from "@/helpers/api";
+import { CategoryPageComponent } from "@/page-components/CategoryPage/CategoryPage.component";
 
 const Type = ({ menu, firstCategory }: TypeProps) => {
   return (
-    <div>
-      {firstCategory && <div>Type: {firstCategory}</div>}
-      <ul>
-        {menu && menu.map(item => <li key={item._id.secondCategory}>{item._id.secondCategory}</li>)}
-      </ul>
-    </div>
+    <CategoryPageComponent menu={menu} route={firstLevelMenu[firstCategory].route}/>
   );
 };
 
@@ -51,7 +47,7 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({ params }: GetS
     return {
       props: {
         menu,
-        firstCategory: firstCategory.id
+        firstCategory: firstCategory.id,
       }
     };
   } catch {

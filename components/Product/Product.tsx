@@ -53,13 +53,13 @@ export const Product = motion(forwardRef(({ product, className }: ProductProps, 
         </div>
         <Htag tag="h3" className={styles.title}>{product.title}</Htag>
         <div className={styles.price}>
-          <span className='visualyHidden'>Цена</span>
+          <span className='visuallyHidden'>Цена</span>
           {priceRu(product.price)}
-          {product.oldPrice && <Tag className={styles.oldPrice} color="green"><span className='visualyHidden'>Скидка</span>{priceRu(product.price - product.oldPrice)}</Tag>}
+          {product.oldPrice && <Tag className={styles.oldPrice} color="green"><span className='visuallyHidden'>Скидка</span>{priceRu(product.price - product.oldPrice)}</Tag>}
         </div>
-        <div className={styles.credit}><span className='visualyHidden'>Кредит</span>{priceRu(product.credit)}<span>/мес</span></div>
+        <div className={styles.credit}><span className='visuallyHidden'>Кредит</span>{priceRu(product.credit)}<span>/мес</span></div>
         <div className={styles.rating}>
-          <span className='visualyHidden'>{`Рейтинг ${product.reviewAvg ?? product.initialRating}`}</span>
+          <span className='visuallyHidden'>{`Рейтинг ${product.reviewAvg ?? product.initialRating}`}</span>
           <Rating rating={product.reviewAvg ?? product.initialRating} />
         </div>
         <div className={styles.categories}>{product.categories.map(c => <Tag key={c} className={styles.category} color="ghost">{c}</Tag>)}</div>

@@ -12,6 +12,7 @@ export { Input } from './Input/Input';
 export { Textarea } from './Textarea/Textarea';
 export { Search } from './Search/Search';
 export { Product } from './Product/Product';
+export { ProductList } from './ProductList/ProductList';
 export { Review } from './Review/Review';
 export { ReviewForm } from './ReviewForm/ReviewForm';
 export { Up } from './Up/Up';

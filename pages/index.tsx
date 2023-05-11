@@ -1,35 +1,16 @@
-import { useState } from "react";
-import { Button, Htag, Ptag, Tag, Rating, Input, Textarea } from "../components";
+import { Htag } from "../components";
 import withLayout from "../HOC/withLayout";
 import axios from 'axios';
 import { MenuItem } from "../interfaces/menu.interface";
 import { GetStaticProps } from 'next';
 import { API } from "@/helpers/api";
+import styles from "./index.module.css";
 
-const Home = ({ menu }: HomeProps) => {
-  const [rating, setRating] = useState<number>(3);
+const Home = ({ menu }: HomeProps):JSX.Element => {
   return (
-    <>
-      <Htag tag='h1'>Test</Htag>
-      <Htag tag='h2'>Test</Htag>
-      <Htag tag='h3'>Test</Htag>
-      <Button color='primary'>Test</Button>
-      <Button color='ghost'>Test</Button>
-      <Button color='primary' arrow="down">Test</Button>
-      <Button color='ghost' arrow="right">Test</Button>
-      <Ptag size='small'>Lorem ipsum dolor sit amet consectetur</Ptag>
-      <Ptag size='medium'>Lorem ipsum dolor sit amet consectetur</Ptag>
-      <Ptag size='large'>Lorem ipsum dolor sit amet consectetur</Ptag>
-      <Tag size='large' color='gray'>gray</Tag>
-      <Tag size='large' color='red'>red</Tag>
-      <Tag size='small' color='primary' href='https/'>primary</Tag>
-      <Tag size='small' color='ghost'>ghost</Tag>
-      <Tag size='small' color='green'>green</Tag>
-      <Tag>empty</Tag>
-      <Rating rating={rating} isEditable={true} setRating={setRating} />
-      <Input placeholder="Поиск..." />
-      <Textarea placeholder="текст" />
-    </>
+    <div className={ styles.wrapper }>
+      <Htag tag='h1'>Выберите интересующий Вас раздел</Htag>
+    </div>
   );
 };
 

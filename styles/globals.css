@@ -23,7 +23,7 @@ ul {
 	list-style: none;
 }
 
-.visualyHidden {
+.visuallyHidden {
 	position: absolute;
 	width: 0;
 	height: 0;
