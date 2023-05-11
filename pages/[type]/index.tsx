@@ -7,8 +7,12 @@ import { firstLevelMenu } from '@/helpers/helper';
 import { menuCategory } from "@/interfaces/page.interface";
 import { API } from "@/helpers/api";
 import { CategoryPageComponent } from "@/page-components/CategoryPage/CategoryPage.component";
+import { Error404 } from "../404";
 
 const Type = ({ menu, firstCategory }: TypeProps) => {
+  if(!menu || !firstCategory) {
+    return <Error404/>;
+  }
   return (
     <CategoryPageComponent menu={menu} route={firstLevelMenu[firstCategory].route}/>
   );
