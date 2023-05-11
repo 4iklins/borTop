@@ -7,7 +7,7 @@ import {Error404} from "./404";
 const Search = (props: SearchProps) => {
   return (
     <>
-    <Error404/>
+     <Error404/>
     </>
   );
 };
